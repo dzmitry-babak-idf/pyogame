@@ -358,7 +358,7 @@ class OGame(object):
         )
 
         class Celestial:
-            diameter = int(textContent1.group(1).replace('.', ''))
+            diameter = int(textContent1.group(1).replace('.', '').replace(',', ''))
             used = int(textContent1.group(2))
             total = int(textContent1.group(4))
             free = total - used
