@@ -367,8 +367,8 @@ class OGame(object):
                 textContent3[1]
             ]
             coordinates = OGame.celestial_coordinates(self, id)
-            points = int(textContent7.group(2).replace(".", ""))
-            rank = int(textContent7.group(3).replace(".", ""))
+            points = int(textContent7.group(2).replace(".", "").replace(',', ''))
+            rank = int(textContent7.group(3).replace(".", "").replace(',', ''))
 
         return Celestial
 
