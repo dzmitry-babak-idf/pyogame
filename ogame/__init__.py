@@ -1717,7 +1717,7 @@ class OGame(object):
             for resource in resources_list.find_all('li'):
                 resource_name = resource.find('div')['class']
                 resource_name.remove('resourceIcon')
-                resources_data[resource_name[0]] = int(resource['title'].replace('.', ''))
+                resources_data[resource_name[0]] = int(resource['title'].replace('.', '').replace(",", ""))
 
             def get_tech_and_quantity(tech_type):
                 tech_list = bs4.find('ul', {'data-type': tech_type})
