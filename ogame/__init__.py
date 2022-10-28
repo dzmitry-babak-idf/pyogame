@@ -447,9 +447,9 @@ class OGame(object):
                 attrs={'class':'undermark'}
             )
             day_production = [
-                int(day_production[0].span['title'].replace('.', '')),
-                int(day_production[1].span['title'].replace('.', '')),
-                int(day_production[2].span['title'].replace('.', ''))
+                int(day_production[0].span['title'].replace('.', '').replace(',', '')),
+                int(day_production[1].span['title'].replace('.', '').replace(',', '')),
+                int(day_production[2].span['title'].replace('.', '').replace(',', ''))
             ]
             storage = bs4.find_all('tr')
             for stor in storage:
@@ -457,9 +457,9 @@ class OGame(object):
                     storage = stor.find_all('td', attrs={'class': 'left2'})
                     break
             storage = [
-                int(storage[0].span['title'].replace('.', '')),
-                int(storage[1].span['title'].replace('.', '')),
-                int(storage[2].span['title'].replace('.', ''))
+                int(storage[0].span['title'].replace('.', '').replace(',', '')),
+                int(storage[1].span['title'].replace('.', '').replace(',', '')),
+                int(storage[2].span['title'].replace('.', '').replace(',', ''))
             ]
             darkmatter = to_int(bs4.find(id='resources_darkmatter')['data-raw'])
             energy = to_int(bs4.find(id='resources_energy')['data-raw'])
@@ -1727,7 +1727,7 @@ class OGame(object):
                 else:
                     for tech in tech_list.find_all('li', {'class': 'detail_list_el'}):
                         tech_id = int(re.search(r'([0-9]+)', tech.find('img')['class'][0]).group(1))
-                        tech_amount = int(tech.find('span', 'fright').text.replace('.', ''))
+                        tech_amount = int(tech.find('span', 'fright').text.replace('.', '').replace(',', ''))
                         yield (tech_id, tech_amount)
 
             spied_data = {'ships': {}, 'defense': {}, 'buildings': {}, 'research': {}}
